@@ -1,0 +1,15 @@
+.navbar {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar__item {
+    height: 100%;
+    padding: 10px;
+}
+
+.navbar--grey {
+    background-color: $grey;
+}
