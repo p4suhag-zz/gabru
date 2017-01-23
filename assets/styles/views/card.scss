@@ -1,0 +1,45 @@
+.card {
+    max-width: 560px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+
+.card__dish {
+    width: 150px;
+}
+
+.card__image {
+    background-image: url('../images/food.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 150px;
+}
+
+.card__nutrition {
+    padding: 0 10px;
+}
+
+.card__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    height: 150px;
+    align-items: center;
+}
+
+.card__item {
+    width: 50%;
+}
+
+.card__itemname {
+    margin-bottom: 8px;
+}
+
+.card__bottom{
+    margin-top: 10px;
+}
+.card__btn {
+    width: 120px;
+    background-color: rgba(242, 242, 242, 1);
+    padding: 8px;
+}

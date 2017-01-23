@@ -8,7 +8,7 @@ const WebpackDevServer = require("webpack-dev-server");
 var webpackConfig = {
     entry: {
         vendor: ['jquery'],
-        app: './app/index.js'
+        app: './app/index.jsx'
     },
     output: {
         path: path.join(__dirname, '../', '.build/js/'),
