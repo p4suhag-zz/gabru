@@ -1,45 +1,35 @@
-.card {
-    max-width: 560px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 15px;
+.containercard {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 30px;
 }
 
-.card__dish {
-    width: 150px;
+.card {
+    max-width: 300px;
+    margin: 15px auto;
+    padding: 15px;
+    background-color: $front-color;
 }
 
 .card__image {
-    background-image: url('../images/food.jpg');
-    background-position: center;
+    height: 250px;
     background-size: cover;
-    height: 150px;
+    background-position: center;
 }
 
-.card__nutrition {
-    padding: 0 10px;
+.card__content {
+    padding: 10px 0;
 }
 
-.card__list {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    height: 150px;
-    align-items: center;
+.card__name {
+    height: 25px;
+    overflow: hidden;
 }
 
-.card__item {
-    width: 50%;
-}
-
-.card__itemname {
-    margin-bottom: 8px;
-}
-
-.card__bottom{
-    margin-top: 10px;
-}
-.card__btn {
-    width: 120px;
-    background-color: rgba(242, 242, 242, 1);
-    padding: 8px;
+.card__button {
+    max-width: 120px;
+    text-align: center;
+    padding: 6px;
+    margin: 20px 0 0;
+    border: 1px solid $back-color;
 }

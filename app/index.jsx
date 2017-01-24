@@ -9,11 +9,11 @@ const Layout = React.createClass({
     render: function() {
         return (
             <div>
-                < Navbar />
-                < Card />
+                <Navbar />
+                <Card />
             </div>
         );
     }
 });
 
-render(< Layout /> , document.getElementById('app'));
+render(<Layout /> , document.getElementById('app'));
