@@ -6,7 +6,7 @@ import recipe from '../../data/recipe.js';
 
 const Card = React.createClass({
     createCard: function(data) {
-        return <Cardview name={data.name} image={data.image} />;
+        return <Cardview name={data.name} image={data.image} key={data.id} />;
     },
     createCards: function(recipe) {
         return recipe.map(this.createCard);

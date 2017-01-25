@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import { Router, Route, Link } from 'react-router';
 
 const Navbar = React.createClass({
     render: function() {
@@ -10,7 +11,7 @@ const Navbar = React.createClass({
                     <p>Gabru</p>
                 </div>
                 <div className="navbar__item">
-                    <p>My Diet</p>
+                    <p><Link to="/mydiet">My Diet</Link></p>
                 </div>
             </div>    
         );
