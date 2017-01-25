@@ -1,9 +1,3 @@
-.containercard {
-    max-width: 1200px;
-    margin: auto;
-    margin-top: 90px;
-}
-
 .card {
     max-width: 300px;
     margin: 15px auto;
@@ -24,12 +18,13 @@
 .card__name {
     height: 25px;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 .card__button {
     max-width: 120px;
     text-align: center;
     padding: 6px;
-    margin: 20px 0 0;
+    margin: 0;
     border: 1px solid $back-color;
 }
