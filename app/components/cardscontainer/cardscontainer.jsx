@@ -5,36 +5,30 @@ import axios from 'axios';
 import Card from './card/Card.jsx';
 import Mydiet from './mydiet/Mydiet.jsx';
 
-const MyDietItem = [];
+const MyDietItem = {};
 
 const Cardhome = React.createClass({
     handleAddDiet: function(info) {
         // console.log(info);
-        var apiurl = 'http://api.cs50.net/food/3/facts?key=64b1434ce52fd6e5ee55f01f7d0ae3f0';
-        var proxyurl = 'https://cors-anywhere.herokuapp.com/';
-        var finalurl = proxyurl + apiurl;
-        axios.get(finalurl, {
-            params: {
-              recipe: info.recipeid,
-              output: 'json'
-            },
-            auth: {
-                username: 'p4suhag',
-                password: 'gabrusuhag'
-            }
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-        MyDietItem.push({
+
+        var oReq = new XMLHttpRequest();
+        oReq.onload = function(e) {
+          var infodata = oReq.response; // not responseText
+          // console.log(infodata);
+          MyDietItem[info.recipeid] = {
             'id': info.recipeid,
             'name': info.name,
-            'image': info.image
-        });
-        // console.log(MyDietItem);
+            'image': info.image,
+            'calories': infodata[1],
+            'protein': infodata[6],
+            'carbs': infodata[10],
+            'fat': infodata[11]
+        }
+        }
+        oReq.open('GET', 'http://api.cs50.net/food/3/facts?key=64b1434ce52fd6e5ee55f01f7d0ae3f0&recipe=' + info.recipeid + '&portion=1&output=json');
+        oReq.responseType = "json";
+        oReq.send();
+        
     },
     render: function() {
         return (
@@ -43,6 +37,13 @@ const Cardhome = React.createClass({
     }
 });
 
+const Carddiet = React.createClass({
+    render: function() {
+        return (
+            <Mydiet dietItem={MyDietItem} />
+        );
+    }
+});
 
 
-export default Cardhome;
+export { Cardhome, Carddiet };

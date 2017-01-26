@@ -4,8 +4,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 import Navbar from './components/navbar/Navbar.jsx';
-import Cardhome from './components/cardscontainer/cardscontainer.jsx';
-import Mydiet from './components/cardscontainer/mydiet/Mydiet.jsx';
+import { Cardhome, Carddiet } from './components/cardscontainer/cardscontainer.jsx';
 
 const Layout = React.createClass({
     render: function() {
@@ -24,7 +23,7 @@ render((
     <Router history={browserHistory}>
         <Route path="/" component={Layout}>
             <IndexRoute component={Cardhome} />
-            <Route path="/mydiet" component={Mydiet} />
+            <Route path="/mydiet" component={Carddiet} />
 
         </Route>
     </Router>
