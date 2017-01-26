@@ -5,8 +5,8 @@ import Mydietview from './mydietview.jsx';
 
 const Mydiet = React.createClass({
     createCard: function(data) {
-        // console.log('mydietview');
-        return <Mydietview name={data.name} image={data.image} recipeid={data.id} key={data.id} />;
+        console.log(data);
+        return <Mydietview nutrition={data} key={data.id} />;
     },
     createCards: function(items) {
         console.log(items);
