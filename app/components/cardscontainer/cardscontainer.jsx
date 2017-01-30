@@ -2,7 +2,6 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
 import Card from './card/Card.jsx';
 import Mydiet from './mydiet/Mydiet.jsx';
 
