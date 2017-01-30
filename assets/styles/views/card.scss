@@ -19,16 +19,24 @@
     height: 25px;
     overflow: hidden;
     margin-bottom: 20px;
+    color: $heading;
+    font-weight: 600;
+    line-height: 1.6em;
+    font-size: 1.1em;
 }
 
 .card__button {
-    max-width: 120px;
+    max-width: 130px;
     text-align: center;
     background-color: $btn-back;
     color: white;
-    font-weight: 300;
+    cursor: pointer;
+    font-weight: 700;
+    word-spacing: 3px;
+    font-size: 0.98em;
+    line-height: 1.6em;
     letter-spacing: 0.5px;
     border-radius: 2px;
-    padding: 8px 10px;
-    margin: 0;
+    padding: 8px 14px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
 }
