@@ -12,7 +12,7 @@ const Card = React.createClass({
         }
     },
     createCard: function(data) {
-        return <Cardview name={data.name} image={data.image} recipeid={data.id} key={data.id} callAddDietFunc={this.callAddDiet} />;
+        return <Cardview name={data.name} image={data.image} recipeid={data.id} key={data.id} callAddDiet={this.callAddDiet} />;
     },
     createCards: function(recipe) {
         return recipe.map(this.createCard);

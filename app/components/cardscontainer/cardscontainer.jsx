@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Card from './card/Card.jsx';
 import Mydiet from './mydiet/Mydiet.jsx';
@@ -38,9 +39,16 @@ const Cardhome = React.createClass({
 });
 
 const Carddiet = React.createClass({
+    getInitialState: function() {
+        return MyDietItem
+    },
+    removeCard: function(recipeid) {
+        delete MyDietItem[recipeid];
+        this.replaceState(MyDietItem);
+    },
     render: function() {
         return (
-            <Mydiet dietItem={MyDietItem} />
+            <Mydiet dietItem={this.state} removecard={this.removeCard} />
         );
     }
 });
