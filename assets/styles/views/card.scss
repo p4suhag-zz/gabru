@@ -16,13 +16,33 @@
 }
 
 .card__name {
-    height: 25px;
+    height: 30px;
     overflow: hidden;
     margin-bottom: 20px;
     color: $heading;
     font-weight: 600;
-    line-height: 1.6em;
-    font-size: 1.1em;
+    line-height: 1.8em;
+    word-spacing: 0.3px;
+    font-size: 1.15em;
+}
+
+.card__nutrition {
+    font-size: 0.95em;
+    font-weight: 600;
+    line-height: 1.7em;
+    letter-spacing: 0.25px;
+    width: 33.3%;
+    display: inline-block;
+    color: rgba(57, 65, 70, 0.93);
+    p {
+        margin-bottom: 5px;
+    }
+    :first-child {
+        color: rgba(97, 105, 111, 0.78);
+    }
+}
+.pad__lft {
+    padding-left: 15px;
 }
 
 .card__button {
@@ -39,4 +59,8 @@
     border-radius: 2px;
     padding: 8px 14px;
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dietbtn {
+    margin: 20px auto 0;
 }
