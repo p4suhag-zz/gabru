@@ -8,6 +8,12 @@ import Mydiet from './mydiet/Mydiet.jsx';
 const MyDietItem = {};
 
 const Cardhome = React.createClass({
+    getInitialState: function() {
+        return {
+            status: true,
+            text: 'Add to Diet'
+        }
+    },
     handleAddDiet: function(info) {
         // console.log(info);
 
@@ -30,9 +36,12 @@ const Cardhome = React.createClass({
         oReq.send();
         
     },
+    handleRemoveDiet: function(recipeid) {
+        delete MyDietItem[recipeid];
+    },
     render: function() {
         return (
-            <Card handleAddDiet={this.handleAddDiet} />
+            <Card handleAddDiet={this.handleAddDiet} handleRemoveDiet={this.handleRemoveDiet} text={this.state.text} />
         );
     }
 });
