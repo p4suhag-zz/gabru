@@ -3,6 +3,7 @@
 import React from 'react';
 import Mydietview from './mydietview.jsx';
 
+
 const Mydiet = React.createClass({
     createCard: function(data) {
         // console.log(data);
@@ -24,6 +25,7 @@ const Mydiet = React.createClass({
         };
     },
     render: function() {
+
         var dietItem = this.props.dietItem;
         return (
             <div className="pure-g">

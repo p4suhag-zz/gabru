@@ -8,15 +8,7 @@ import Mydiet from './mydiet/Mydiet.jsx';
 const MyDietItem = {};
 
 const Cardhome = React.createClass({
-    getInitialState: function() {
-        return {
-            status: true,
-            text: 'Add to Diet'
-        }
-    },
     handleAddDiet: function(info) {
-        // console.log(info);
-
         var oReq = new XMLHttpRequest();
         oReq.onload = function(e) {
           var infodata = oReq.response; // not responseText
@@ -33,15 +25,11 @@ const Cardhome = React.createClass({
         }
         oReq.open('GET', 'http://api.cs50.net/food/3/facts?key=64b1434ce52fd6e5ee55f01f7d0ae3f0&recipe=' + info.recipeid + '&portion=1&output=json');
         oReq.responseType = "json";
-        oReq.send();
-        
-    },
-    handleRemoveDiet: function(recipeid) {
-        delete MyDietItem[recipeid];
+        oReq.send(); 
     },
     render: function() {
         return (
-            <Card handleAddDiet={this.handleAddDiet} handleRemoveDiet={this.handleRemoveDiet} text={this.state.text} />
+            <Card handleAddDiet={this.handleAddDiet} />
         );
     }
 });

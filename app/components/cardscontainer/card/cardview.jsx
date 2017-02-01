@@ -10,7 +10,7 @@ const Cardview = React.createClass({
                     <div className="card__image" style={{backgroundImage: "url(" + this.props.image + ")"}}></div>
                     <div className="card__content">
                         <p className="card__name">{this.props.name}</p>
-                        <p className="card__button" onClick={this.props.callAddDiet(this.props)} >{this.props.text}</p>
+                        <p className="card__button" onClick={this.props.callAddDiet(this.props)} >Add to Diet</p>
                     </div>
                 </div>
             </div>
