@@ -6,6 +6,8 @@
     position: fixed;
     top: 0;
     width: 100%;
+    font-weight: 600;
+    font-size: 1.2em;
 }
 
 .navbar__item {
@@ -13,5 +15,5 @@
 }
 
 .navbar--grey {
-    background-color: $front-color;
+    background-color: $navbar-back;
 }
