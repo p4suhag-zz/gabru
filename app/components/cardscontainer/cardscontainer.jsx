@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import Card from './card/Card.jsx';
 import Mydiet from './mydiet/Mydiet.jsx';
 
-const MyDietItem = {};
+const MyDietItem = JSON.parse(localStorage.getItem('MyDietItem')) || {};
 
 const Cardhome = React.createClass({
     handleAddDiet: function(info) {
@@ -22,6 +22,7 @@ const Cardhome = React.createClass({
             'carbs': infodata[10],
             'fat': infodata[11]
         }
+        localStorage.setItem('MyDietItem', JSON.stringify(MyDietItem));
         }
         oReq.open('GET', 'http://api.cs50.net/food/3/facts?key=64b1434ce52fd6e5ee55f01f7d0ae3f0&recipe=' + info.recipeid + '&portion=1&output=json');
         oReq.responseType = "json";
