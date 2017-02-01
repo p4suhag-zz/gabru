@@ -41,6 +41,7 @@ const Carddiet = React.createClass({
     },
     removeCard: function(recipeid) {
         delete MyDietItem[recipeid];
+        localStorage.setItem('MyDietItem', JSON.stringify(MyDietItem));
         this.replaceState(MyDietItem);
     },
     render: function() {
