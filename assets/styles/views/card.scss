@@ -49,6 +49,7 @@
     max-width: 130px;
     text-align: center;
     background-color: $btn-back;
+    border: 1px solid $btn-back;
     color: white;
     cursor: pointer;
     font-weight: 700;
@@ -60,6 +61,11 @@
     padding: 8px 14px;
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
     transition: all ease 0.1s;
+}
+.card__button:hover {
+    background-color: $btn-backhover;
+    border-color: rgba(255, 255, 255, 0.68);
+
 }
 .card__button:active {
     color: $btn-back;

@@ -18,7 +18,7 @@ webpackJsonp([0],[
 	
 	var _cardscontainer = __webpack_require__(234);
 	
-	var _Notfound = __webpack_require__(240);
+	var _Notfound = __webpack_require__(241);
 	
 	var _Notfound2 = _interopRequireDefault(_Notfound);
 	
@@ -26603,6 +26603,10 @@ webpackJsonp([0],[
 	
 	var _Mydiet2 = _interopRequireDefault(_Mydiet);
 	
+	var _nutrition = __webpack_require__(240);
+	
+	var _nutrition2 = _interopRequireDefault(_nutrition);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var MyDietItem = JSON.parse(localStorage.getItem('MyDietItem')) || {};
@@ -26611,24 +26615,36 @@ webpackJsonp([0],[
 	    displayName: 'Cardhome',
 	
 	    handleAddDiet: function handleAddDiet(info) {
-	        var oReq = new XMLHttpRequest();
-	        oReq.onload = function (e) {
-	            var infodata = oReq.response; // not responseText
-	            // console.log(infodata);
-	            MyDietItem[info.recipeid] = {
-	                'id': info.recipeid,
-	                'name': info.name,
-	                'image': info.image,
-	                'calories': infodata[1],
-	                'protein': infodata[6],
-	                'carbs': infodata[10],
-	                'fat': infodata[11]
-	            };
-	            localStorage.setItem('MyDietItem', JSON.stringify(MyDietItem));
+	        MyDietItem[info.recipeid] = {
+	            'id': info.recipeid,
+	            'name': info.name,
+	            'image': info.image,
+	            'calories': _nutrition2.default[info.recipeid].calories,
+	            'protein': _nutrition2.default[info.recipeid].protein,
+	            'carbs': _nutrition2.default[info.recipeid].carbs,
+	            'fat': _nutrition2.default[info.recipeid].fat
 	        };
-	        oReq.open('GET', 'http://api.cs50.net/food/3/facts?key=64b1434ce52fd6e5ee55f01f7d0ae3f0&recipe=' + info.recipeid + '&portion=1&output=json');
-	        oReq.responseType = "json";
-	        oReq.send();
+	        localStorage.setItem('MyDietItem', JSON.stringify(MyDietItem));
+	        // var oReq = new XMLHttpRequest();
+	        // oReq.onload = function(e) {
+	        //   var infodata = oReq.response; // not responseText
+	        //   // console.log(infodata);
+	        //   MyDietItem[info.recipeid] = {
+	        //     'id': info.recipeid,
+	        //     'name': info.name,
+	        //     'image': info.image,
+	        //     'calories': infodata[1],
+	        //     'protein': infodata[6],
+	        //     'carbs': infodata[10],
+	        //     'fat': infodata[11]
+	        // }
+	
+	        // // console.log(MyDietItem);
+	        // localStorage.setItem('MyDietItem', JSON.stringify(MyDietItem));
+	        // }
+	        // oReq.open('GET', 'http://api.cs50.net/food/3/facts?key=64b1434ce52fd6e5ee55f01f7d0ae3f0&recipe=' + info.recipeid + '&portion=1&output=json');
+	        // oReq.responseType = "json";
+	        // oReq.send(); 
 	    },
 	    render: function render() {
 	        return _react2.default.createElement(_Card2.default, { handleAddDiet: this.handleAddDiet });
@@ -26688,7 +26704,7 @@ webpackJsonp([0],[
 	        };
 	    },
 	    createCard: function createCard(data) {
-	        return _react2.default.createElement(_cardview2.default, { name: data.name, image: data.image, recipeid: data.id, key: data.id, callAddDiet: this.callAddDiet });
+	        return _react2.default.createElement(_cardview2.default, { name: data.name, image: data.image, recipeid: data.recipe, key: data.recipe, callAddDiet: this.callAddDiet });
 	    },
 	    createCards: function createCards(recipe) {
 	        return recipe.map(this.createCard);
@@ -26764,497 +26780,599 @@ webpackJsonp([0],[
 	/* eslint-disable */
 	
 	var recipe = [{
-	  "id": "213012",
-	  "name": "Strawberry Shortcake Topping",
-	  "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "BEAN, WHOLE GRAIN",
+	  "recipe": "503047",
+	  "name": "Bulgur Wheat Pilaf",
+	  "portion": "4",
+	  "unit": "oz",
+	  "image": "https://images.pexels.com/photos/53121/kimchi-fried-rice-fried-rice-rice-korean-53121.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
 	}, {
-	  "id": "213033",
-	  "name": "Blueberry Shortcake Topping",
-	  "image": "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "BROWN RICE STATION",
+	  "recipe": "157033",
+	  "name": "Sriracha Chili Sauce",
+	  "portion": "1",
+	  "unit": "TSP",
+	  "image": "https://images.pexels.com/photos/14737/pexels-photo.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
 	}, {
-	  "id": "061003",
-	  "name": "Shortcake Biscuits",
-	  "image": "https://images.pexels.com/photos/160783/pastries-sweetness-icing-sugar-delicious-160783.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "BROWN RICE STATION",
+	  "recipe": "157037",
+	  "name": "Rice Vinegar",
+	  "portion": "1",
+	  "unit": "TSP",
+	  "image": "https://static.pexels.com/photos/7015/cj-johnson-week-4.jpg"
 	}, {
-	  "id": "061041",
-	  "name": "Baba Ghannouj",
-	  "image": "http://redcookbook.net/wp-content/uploads/images/Baba_Ganouj_8057.jpg",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "BROWN RICE STATION",
+	  "recipe": "221050",
+	  "name": "Natural Lite Soy Sauce",
+	  "portion": "1",
+	  "unit": "TSP",
+	  "image": "https://images.pexels.com/photos/131893/pexels-photo-131893.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
 	}, {
-	  "id": "061042",
-	  "name": "Lentil Salad",
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "BROWN RICE STATION",
+	  "recipe": "505064",
+	  "name": "Brown Rice",
+	  "portion": "3",
+	  "unit": "oz",
+	  "image": "https://images.pexels.com/photos/47546/sushi-eat-japanese-asia-47546.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "DESSERTS",
+	  "recipe": "182002",
+	  "name": "Oatmeal Raisin Cookies",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/298217/pexels-photo-298217.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "DESSERTS",
+	  "recipe": "599028",
+	  "name": "Rocky Road Brownies",
+	  "portion": "1",
+	  "unit": "piece",
+	  "image": "https://images.pexels.com/photos/3666/chocolate-dessert-brownies-cake.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "ENTREES",
+	  "recipe": "503025",
+	  "name": "Pepper, Onion & Cheese Pizza",
+	  "portion": "1",
+	  "unit": "slice",
+	  "image": "https://images.pexels.com/photos/2232/vegetables-italian-pizza-restaurant.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "ENTREES",
+	  "recipe": "504088",
+	  "name": "Roasted Honey Lime Chicken",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/106343/pexels-photo-106343.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "ENTREES",
+	  "recipe": "506025",
+	  "name": "Spinach Pizza on Multigrain Crust",
+	  "portion": "1",
+	  "unit": "slice",
+	  "image": "https://images.pexels.com/photos/2249/vegetables-italian-pizza-restaurant.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "061041",
+	  "name": "Cage-Free Egg Whites",
+	  "portion": "4",
+	  "unit": "oz",
+	  "image": "https://images.pexels.com/photos/8806/food-breakfast-egg-milk.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "075012",
+	  "name": "Crispy Fish Sandwich",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "077003",
+	  "name": "Grilled Burger",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/47725/hamburger-food-meal-tasty-47725.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "077022",
+	  "name": "Grilled All Beef Old Neighborhood Hot Dog",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/295286/pexels-photo-295286.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "133026",
+	  "name": "Turkey Burger",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "138003",
+	  "name": "Grilled Cheese Sandwich",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/5506/bread-food-salad-sandwich.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "138014",
+	  "name": "Grilled Chicken",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/52612/pexels-photo-52612.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "138015",
+	  "name": "Grilled Ham and Cheese",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/214162/pexels-photo-214162.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "142055",
+	  "name": "Garden Burger",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/121513/pexels-photo-121513.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "143059",
+	  "name": "Vegan Dog",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/33307/carrot-kale-walnuts-tomatoes.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "145070",
+	  "name": "Grilled Bean Burrito",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/6500/food-coffee-lunch-burrito.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "211020",
+	  "name": "Hamburger Rolls",
+	  "portion": "1",
+	  "unit": "Roll",
+	  "image": "https://images.pexels.com/photos/2434/bread-food-healthy-breakfast.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "211029",
+	  "name": "Frankfurter Rolls",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/2436/bread-food-healthy-breakfast.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "501033",
+	  "name": "Boca Burger for Grill",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/63746/pexels-photo-63746.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "505056",
+	  "name": "Vegan Chicken Grill Patty",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/8572/food-chicken-meat-outdoors.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "FROM THE GRILLE",
+	  "recipe": "508014",
+	  "name": "Hallal Grilled Hamburger",
+	  "portion": "1",
+	  "unit": "each",
+	  "image": "https://images.pexels.com/photos/99608/pexels-photo-99608.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "PASTA ALA CARTE",
+	  "recipe": "153005",
+	  "name": "Local Marinara Spaghetti Sauce",
+	  "portion": "4",
+	  "unit": "fl. oz",
+	  "image": "https://images.pexels.com/photos/41320/beef-cheese-cuisine-delicious-41320.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "PASTA ALA CARTE",
+	  "recipe": "157550",
+	  "name": "Alfredo Sauce",
+	  "portion": "4",
+	  "unit": "fl. oz",
+	  "image": "https://images.pexels.com/photos/38233/pasta-noodles-cook-tomato-38233.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "PASTA ALA CARTE",
+	  "recipe": "501070",
+	  "name": "Barilla Plus Spaghetti",
+	  "portion": "4",
+	  "unit": "oz",
+	  "image": "https://images.pexels.com/photos/64208/pexels-photo-64208.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "PRODUCTION SALADS",
+	  "recipe": "042075",
+	  "name": "Iberian Chick Pea Salad",
+	  "portion": "4",
+	  "unit": "oz",
+	  "image": "https://images.pexels.com/photos/6461/food-plate-rucola-salad.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "PRODUCTION SALADS",
+	  "recipe": "042079",
+	  "name": "Beet and Onion Salad",
+	  "portion": "4",
+	  "unit": "oz",
+	  "image": "https://images.pexels.com/photos/37352/food-japanese-asian.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "PRODUCTION SALADS",
+	  "recipe": "042090",
+	  "name": "Greek Pasta Salad",
+	  "image": "https://images.pexels.com/photos/6086/food-salad-healthy-vegetables.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "4",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "046001",
+	  "name": "Romaine Lettuce",
+	  "image": "https://images.pexels.com/photos/102123/pexels-photo-102123.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "048006",
+	  "name": "Flaked Tuna",
+	  "image": "https://images.pexels.com/photos/300497/pexels-photo-300497.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "048016",
+	  "name": "Hummus",
+	  "image": "https://images.pexels.com/photos/240710/pexels-photo-240710.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "143001",
+	  "name": "Tofu",
+	  "image": "https://images.pexels.com/photos/251599/pexels-photo-251599.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "161055",
+	  "name": "Crumbled Bleu Cheese",
+	  "image": "https://images.pexels.com/photos/35661/pasta-cheese-egg-food.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "161056",
+	  "name": "Hard Cooked Eggs",
+	  "image": "https://images.pexels.com/photos/160850/egg-hen-s-egg-boiled-egg-breakfast-egg-160850.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "1",
+	  "unit": "each"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "164055",
+	  "name": "Bulgar Wheat Salad",
+	  "image": "https://images.pexels.com/photos/126350/pexels-photo-126350.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "173023",
+	  "name": "Black Beans",
+	  "image": "https://images.pexels.com/photos/65747/pexels-photo-65747.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "1",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "175021",
+	  "name": "Tomato Wedges",
+	  "image": "https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "175022",
+	  "name": "Sliced Cucumbers",
+	  "image": "https://images.pexels.com/photos/59782/pexels-photo-59782.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "175033",
+	  "name": "Sliced Red Onions",
+	  "image": "https://images.pexels.com/photos/1398/food-vegetables-meal-kitchen.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "175054",
+	  "name": "HUDS Salad Mix",
+	  "image": "https://images.pexels.com/photos/3323/food-salad-healthy-vegetables.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "175076",
+	  "name": "Broccoli Florets",
+	  "image": "https://images.pexels.com/photos/236798/pexels-photo-236798.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "176034",
+	  "name": "Shredded Carrots",
+	  "image": "https://images.pexels.com/photos/8691/pexels-photo-8691.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "205005",
+	  "name": "Applesauce",
+	  "image": "https://images.pexels.com/photos/14737/pexels-photo.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SALAD BAR",
+	  "recipe": "205009",
+	  "name": "Pear Halves",
+	  "image": "https://images.pexels.com/photos/24859/pexels-photo-24859.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "2",
+	  "unit": "oz"
+	}, {
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "048503",
+	  "name": "Tuna Salad",
 	  "image": "https://images.pexels.com/photos/5928/salad-healthy-diet-spinach.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": true,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "portion": "4",
+	  "unit": "oz"
 	}, {
-	  "id": "061056",
-	  "name": "Sour Cream Cake",
-	  "image": "https://images.pexels.com/photos/236769/pexels-photo-236769.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "071039",
+	  "name": "Home Cooked Roast Beef",
+	  "image": "https://images.pexels.com/photos/262945/pexels-photo-262945.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "4",
+	  "unit": "oz"
 	}, {
-	  "id": "161049",
-	  "name": "Mexican Crumbles",
-	  "image": "https://images.pexels.com/photos/5944/food-lunch-mexican-nachos.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "113063",
-	  "name": "Haitian Pumpkin Soup",
-	  "image": "https://images.pexels.com/photos/40814/soup-cream-soup-bowl-40814.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "031003",
-	  "name": "Mexican Churros",
-	  "image": "https://images.pexels.com/photos/7390/pexels-photo.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "031006",
-	  "name": "U Choose Ice Cream",
-	  "image": "https://images.pexels.com/photos/40725/muesli-breakfast-food-cornflakes-40725.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "503047",
-	  "name": "Thin Asian Egg Noodles (AS)",
-	  "image": "https://images.pexels.com/photos/27642/pexels-photo-27642.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "157033",
-	  "name": "Clementines",
-	  "image": "https://images.pexels.com/photos/39683/oranges-tangerines-clementines-citrus-fruit-39683.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "each",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": true,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "157037",
-	  "name": "Whole Wheat Berry Muffin",
-	  "image": "https://images.pexels.com/photos/104987/pexels-photo-104987.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "221050",
-	  "name": "Cinnamon Coffee Cake Muffin",
-	  "image": "https://images.pexels.com/photos/2230/restaurant-coffee-chocolate-dessert.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "505064",
-	  "name": "Very Strawberry Frozen Yogurt",
-	  "image": "https://images.pexels.com/photos/8382/pexels-photo.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "fl. oz",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "182002",
-	  "name": "Carrot Raisin Muffin",
-	  "image": "https://images.pexels.com/photos/240712/pexels-photo-240712.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": null,
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "599028",
-	  "name": "Beef Demi Glaze Sauce",
-	  "image": "https://images.pexels.com/photos/35844/appetizer-beer-sauce-potatoes.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "oz",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "503025",
-	  "name": "BBQ Turkey Tips",
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "113520",
+	  "name": "Roasted Low-Sodium Turkey",
 	  "image": "https://images.pexels.com/photos/106343/pexels-photo-106343.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "oz",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "portion": "4",
+	  "unit": "oz"
 	}, {
-	  "id": "504088",
-	  "name": "BBQ Beef",
-	  "image": "https://images.pexels.com/photos/94440/pexels-photo-94440.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "oz",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "130029",
+	  "name": "Cheddar Cheese",
+	  "image": "https://images.pexels.com/photos/306801/pexels-photo-306801.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "1",
+	  "unit": "oz"
 	}, {
-	  "id": "506025",
-	  "name": "Mousaka Salad",
-	  "image": "https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "oz",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": true,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "130074",
+	  "name": "Yellow American Cheese",
+	  "image": "https://images.pexels.com/photos/37922/cheese-slicer-crackers-appetizers-dairy-product-37922.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "1",
+	  "unit": "oz"
 	}, {
-	  "id": "175022",
-	  "name": "Mu Shu Pancakes",
-	  "image": "https://images.pexels.com/photos/26676/pexels-photo-26676.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "each",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "175035",
+	  "name": "Leaf Lettuce",
+	  "image": "https://images.pexels.com/photos/208485/pexels-photo-208485.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "1",
+	  "unit": "oz"
 	}, {
-	  "id": "175033",
-	  "name": "Chicken Fries",
-	  "image": "https://images.pexels.com/photos/236780/pexels-photo-236780.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "oz",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "175036",
+	  "name": "Sliced Tomatoes",
+	  "image": "https://images.pexels.com/photos/175950/pexels-photo-175950.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "1",
+	  "unit": "oz"
 	}, {
-	  "id": "175054",
-	  "name": "Sesame Ginger Dressing",
-	  "image": "https://images.pexels.com/photos/69482/pexels-photo-69482.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "fl. oz",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "176007",
+	  "name": "Sliced Red Onions",
+	  "image": "https://images.pexels.com/photos/1398/food-vegetables-meal-kitchen.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "1",
+	  "unit": "oz"
 	}, {
-	  "id": "175076",
-	  "name": "Parker House Dinner Roll",
-	  "image": "https://images.pexels.com/photos/144432/pexels-photo-144432.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "each",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "217002",
+	  "name": "Potato Chips",
+	  "image": "https://images.pexels.com/photos/26548/pexels-photo.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "1",
+	  "unit": "oz"
 	}, {
-	  "id": "205005",
-	  "name": "Seasoned Cassava Flour",
-	  "image": "https://images.pexels.com/photos/94443/pexels-photo-94443.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "Teaspoon",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "221012",
+	  "name": "Pepper Relish",
+	  "image": "https://images.pexels.com/photos/8544/food-dinner-grilled-shashlik.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "1",
+	  "unit": "oz"
 	}, {
-	  "id": "205009",
-	  "name": "Farm to Fork",
-	  "image": "https://images.pexels.com/photos/299348/pexels-photo-299348.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "Serving",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "221019",
+	  "name": "Kosher Dill Pickle Chips",
+	  "image": "https://images.pexels.com/photos/7782/food-plate-wood-restaurant.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "3",
+	  "unit": "each"
 	}, {
-	  "id": "113520",
-	  "name": "Extreme Cookies & Cream Frozen Yogurt",
-	  "image": "https://images.pexels.com/photos/192599/pexels-photo-192599.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "fl. oz",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "505033",
+	  "name": "Red Pepper Hummus",
+	  "image": "https://images.pexels.com/photos/89246/pexels-photo-89246.png?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "4",
+	  "unit": "oz"
 	}, {
-	  "id": "130029",
-	  "name": "Sports Bar",
-	  "image": "https://images.pexels.com/photos/33344/macadamia-nuts-nut-protein.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "each",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "SANDWICH BAR",
+	  "recipe": "505587",
+	  "name": "Seasonal Roasted Vegetables",
+	  "image": "https://images.pexels.com/photos/111131/meat-vegetables-gemuesepiess-mushrooms-111131.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "4",
+	  "unit": "oz"
 	}, {
-	  "id": "130074",
-	  "name": "Assorted Dinner Rolls",
-	  "image": "https://images.pexels.com/photos/96619/pexels-photo-96619.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "each",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": true,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "STARCH & POTATOES",
+	  "recipe": "161010",
+	  "name": "Tater Tots",
+	  "image": "https://images.pexels.com/photos/128388/pexels-photo-128388.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "4",
+	  "unit": "oz"
 	}, {
-	  "id": "176007",
-	  "name": "Papadum",
-	  "image": "http://www.tasteofindiastaustell.co.uk/wp-content/uploads/2015/05/122119-papadum.jpg",
-	  "size": null,
-	  "unit": "each",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "TODAY'S SOUP",
+	  "recipe": "023549",
+	  "name": "Tomato Basil Ravioli Soup",
+	  "image": "https://images.pexels.com/photos/5793/food-healthy-hand-cooking.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "6",
+	  "unit": "fl. oz"
 	}, {
-	  "id": "175036",
-	  "name": "Soup du jour",
-	  "image": "https://images.pexels.com/photos/3656/food-restaurant-lunch-cutlery.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "fl. oz",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "TODAY'S SOUP",
+	  "recipe": "025503",
+	  "name": "French Onion Soup with Croutons",
+	  "image": "https://images.pexels.com/photos/128950/pexels-photo-128950.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "6",
+	  "unit": "fl. oz"
 	}, {
-	  "id": "217002",
-	  "name": "Pears",
-	  "image": "https://images.pexels.com/photos/191157/pexels-photo-191157.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "oz",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": true,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "VEGETABLES",
+	  "recipe": "175088",
+	  "name": "Steamed Broccoli",
+	  "image": "https://images.pexels.com/photos/53821/pexels-photo-53821.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "4",
+	  "unit": "oz"
 	}, {
-	  "id": "221012",
-	  "name": "Ciabatta Bread Roll",
-	  "image": "https://images.pexels.com/photos/105861/pexels-photo-105861.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "each",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "221019",
-	  "name": "Fresh Mozzarella",
-	  "image": "https://images.pexels.com/photos/41967/appetizer-canape-canapes-cheese-41967.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "oz",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "161010",
-	  "name": "Bananas",
-	  "image": "https://images.pexels.com/photos/2425/food-restaurant-fruits-orange.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "oz",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": true,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "211015",
-	  "name": "English Muffin",
-	  "image": "https://images.pexels.com/photos/74776/night-74776.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "each",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "791582",
-	  "name": "Feta Cheese",
-	  "image": "http://www.thehearabouts.com/wp-content/uploads/2014/08/Watermelon_cucumber_feta_salad-6.jpg",
-	  "size": null,
-	  "unit": "oz",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "184054",
-	  "name": "Raspberry Pomegranate Frozen Yogurt",
-	  "image": "https://images.pexels.com/photos/128865/pexels-photo-128865.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "fl. oz",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "184055",
-	  "name": "Mango Frozen Yogurt",
-	  "image": "https://images.pexels.com/photos/46180/dessert-sweet-dish-spoon-cream-46180.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "fl. oz",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "184056",
-	  "name": "Pistachio Frozen Yogurt",
-	  "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTAG3n5TR6HU2r7XS62InMAg07F_zdZu9ywjgryljfm72mRelHF",
-	  "size": null,
-	  "unit": "fl. oz",
-	  "ingredients": null,
-	  "VEGETARIAN": true,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
-	}, {
-	  "id": "791528",
-	  "name": "Wasabi Peas",
-	  "image": "https://images.pexels.com/photos/8718/vegetables-frying-pan-greens.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-	  "size": null,
-	  "unit": "oz",
-	  "ingredients": null,
-	  "VEGETARIAN": false,
-	  "VEGAN": false,
-	  "MOLLIE KATZEN": false,
-	  "LOCAL": false,
-	  "ORGANIC": false
+	  "date": "2011-03-22",
+	  "meal": "LUNCH",
+	  "category": "VEGETABLES",
+	  "recipe": "502035",
+	  "name": "Steamed Sugar Snap Peas",
+	  "image": "https://images.pexels.com/photos/8379/food.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	  "portion": "4",
+	  "unit": "oz"
 	}];
 	
 	exports.default = recipe;
@@ -27463,6 +27581,1737 @@ webpackJsonp([0],[
 
 /***/ },
 /* 240 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/* eslint-disable */
+	
+	var nutrition = {
+	    "113520": {
+	        "id": "113520",
+	        "name": "Roasted Low-Sodium Turkey",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "30.50",
+	            "percent": 2
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "5.58",
+	            "percent": 11
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.50",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.25",
+	            "percent": 1
+	        }
+	    },
+	    "117003": {
+	        "id": "117003",
+	        "name": "Chickwich",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "250.00",
+	            "percent": 13
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "15.00",
+	            "percent": 30
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "13.00",
+	            "percent": 4
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "15.00",
+	            "percent": 23
+	        }
+	    },
+	    "130029": {
+	        "id": "130029",
+	        "name": "Cheddar Cheese",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "114.00",
+	            "percent": 6
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "7.10",
+	            "percent": 14
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.40",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "9.40",
+	            "percent": 14
+	        }
+	    },
+	    "130074": {
+	        "id": "130074",
+	        "name": "Yellow American Cheese",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "104.00",
+	            "percent": 5
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "4.50",
+	            "percent": 9
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.50",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "7.50",
+	            "percent": 11
+	        }
+	    },
+	    "133026": {
+	        "id": "133026",
+	        "name": "Turkey Burger",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "136.00",
+	            "percent": 7
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "16.10",
+	            "percent": 32
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "8.00",
+	            "percent": 12
+	        }
+	    },
+	    "138003": {
+	        "id": "138003",
+	        "name": "Grilled Cheese Sandwich",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "375.00",
+	            "percent": 19
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "14.00",
+	            "percent": 28
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "26.60",
+	            "percent": 9
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "23.10",
+	            "percent": 35
+	        }
+	    },
+	    "138014": {
+	        "id": "138014",
+	        "name": "Grilled Chicken",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "121.00",
+	            "percent": 6
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "26.00",
+	            "percent": 52
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "2.60",
+	            "percent": 4
+	        }
+	    },
+	    "138015": {
+	        "id": "138015",
+	        "name": "Grilled Ham and Cheese",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "433.00",
+	            "percent": 22
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "19.80",
+	            "percent": 40
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "30.10",
+	            "percent": 10
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "22.60",
+	            "percent": 35
+	        }
+	    },
+	    "142055": {
+	        "id": "142055",
+	        "name": "Garden Burger",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "189.00",
+	            "percent": 9
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "21.80",
+	            "percent": 44
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "7.30",
+	            "percent": 2
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "8.70",
+	            "percent": 13
+	        }
+	    },
+	    "143001": {
+	        "id": "143001",
+	        "name": "Tofu",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "28.75",
+	            "percent": 2
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "3.62",
+	            "percent": 7
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.72",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "1.43",
+	            "percent": 2
+	        }
+	    },
+	    "143059": {
+	        "id": "143059",
+	        "name": "Vegan Dog",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "111.00",
+	            "percent": 6
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "9.10",
+	            "percent": 18
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "18.20",
+	            "percent": 6
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "145070": {
+	        "id": "145070",
+	        "name": "Grilled Bean Burrito",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "182.00",
+	            "percent": 9
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "7.10",
+	            "percent": 14
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "30.70",
+	            "percent": 10
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "3.70",
+	            "percent": 6
+	        }
+	    },
+	    "153005": {
+	        "id": "153005",
+	        "name": "Local Marinara Spaghetti Sauce",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "16.00",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.45",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.35",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.23",
+	            "percent": 0
+	        }
+	    },
+	    "157033": {
+	        "id": "157033",
+	        "name": "Sriracha Chili Sauce",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "5.00",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.90",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "157037": {
+	        "id": "157037",
+	        "name": "Rice Vinegar",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "157550": {
+	        "id": "157550",
+	        "name": "Alfredo Sauce",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "104.75",
+	            "percent": 5
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "1.75",
+	            "percent": 4
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.40",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "10.35",
+	            "percent": 16
+	        }
+	    },
+	    "161010": {
+	        "id": "161010",
+	        "name": "Tater Tots",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "56.00",
+	            "percent": 3
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.70",
+	            "percent": 2
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "6.58",
+	            "percent": 2
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "2.90",
+	            "percent": 5
+	        }
+	    },
+	    "161055": {
+	        "id": "161055",
+	        "name": "Crumbled Bleu Cheese",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "101.00",
+	            "percent": 5
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "7.10",
+	            "percent": 14
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "8.10",
+	            "percent": 12
+	        }
+	    },
+	    "161056": {
+	        "id": "161056",
+	        "name": "Hard Cooked Eggs",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "78.00",
+	            "percent": 4
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "6.70",
+	            "percent": 13
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.10",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "5.00",
+	            "percent": 8
+	        }
+	    },
+	    "164035": {
+	        "id": "164035",
+	        "name": "Fettuccine",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "102.00",
+	            "percent": 5
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "3.67",
+	            "percent": 7
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "20.98",
+	            "percent": 7
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.42",
+	            "percent": 1
+	        }
+	    },
+	    "164055": {
+	        "id": "164055",
+	        "name": "Bulgar Wheat for your Salad",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "50.00",
+	            "percent": 3
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "1.75",
+	            "percent": 4
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "11.05",
+	            "percent": 4
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.20",
+	            "percent": 0
+	        }
+	    },
+	    "173023": {
+	        "id": "173023",
+	        "name": "Black Beans",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "24.00",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "1.30",
+	            "percent": 3
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "4.35",
+	            "percent": 2
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.10",
+	            "percent": 0
+	        }
+	    },
+	    "175021": {
+	        "id": "175021",
+	        "name": "Tomato Wedges",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "6.00",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.25",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.32",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.10",
+	            "percent": 0
+	        }
+	    },
+	    "175022": {
+	        "id": "175022",
+	        "name": "Sliced Cucumbers",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "3.00",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.10",
+	            "percent": 0
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.50",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "175033": {
+	        "id": "175033",
+	        "name": "Sliced Red Onions",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "10.00",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.30",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "2.40",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "175035": {
+	        "id": "175035",
+	        "name": "Leaf Lettuce",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "4.00",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.40",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.80",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "175036": {
+	        "id": "175036",
+	        "name": "Sliced Tomatoes",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "6.00",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.20",
+	            "percent": 0
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.30",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.10",
+	            "percent": 0
+	        }
+	    },
+	    "175054": {
+	        "id": "175054",
+	        "name": "HUDS Salad Mix",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "3.50",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.40",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.65",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.05",
+	            "percent": 0
+	        }
+	    },
+	    "175076": {
+	        "id": "175076",
+	        "name": "Broccoli Florets",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "7.94",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.84",
+	            "percent": 2
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.49",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.10",
+	            "percent": 0
+	        }
+	    },
+	    "175088": {
+	        "id": "175088",
+	        "name": "Steamed Broccoli",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "9.50",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.65",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.93",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.10",
+	            "percent": 0
+	        }
+	    },
+	    "176007": {
+	        "id": "176007",
+	        "name": "Sliced Red Onions",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "9.00",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.30",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "2.20",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "176034": {
+	        "id": "176034",
+	        "name": "Shredded Carrots",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "12.00",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.30",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "2.70",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.10",
+	            "percent": 0
+	        }
+	    },
+	    "182002": {
+	        "id": "182002",
+	        "name": "Oatmeal Raisin Cookies",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "120.00",
+	            "percent": 6
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "2.00",
+	            "percent": 4
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "18.00",
+	            "percent": 6
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "5.00",
+	            "percent": 8
+	        }
+	    },
+	    "205005": {
+	        "id": "205005",
+	        "name": "Applesauce",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "11.50",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "3.00",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "205009": {
+	        "id": "205009",
+	        "name": "Pear Halves",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "8.00",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.05",
+	            "percent": 0
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "2.20",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "211020": {
+	        "id": "211020",
+	        "name": "Hamburger Rolls",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "140.00",
+	            "percent": 7
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "4.00",
+	            "percent": 8
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "27.00",
+	            "percent": 9
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "1.50",
+	            "percent": 2
+	        }
+	    },
+	    "211029": {
+	        "id": "211029",
+	        "name": "Frankfurter Rolls",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "120.00",
+	            "percent": 6
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "4.00",
+	            "percent": 8
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "23.00",
+	            "percent": 8
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "1.50",
+	            "percent": 2
+	        }
+	    },
+	    "217002": {
+	        "id": "217002",
+	        "name": "Potato Chips",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "152.00",
+	            "percent": 8
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "2.00",
+	            "percent": 4
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "15.20",
+	            "percent": 5
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "10.10",
+	            "percent": 16
+	        }
+	    },
+	    "221012": {
+	        "id": "221012",
+	        "name": "Pepper Relish",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "221019": {
+	        "id": "221019",
+	        "name": "Kosher Dill Pickle Chips",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "0.67",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "221050": {
+	        "id": "221050",
+	        "name": "Natural Lite Soy Sauce",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "3.00",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.40",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.50",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "501033": {
+	        "id": "501033",
+	        "name": "Boca Burger for Grill",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "70.00",
+	            "percent": 4
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "13.00",
+	            "percent": 26
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "6.00",
+	            "percent": 2
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "1.00",
+	            "percent": 2
+	        }
+	    },
+	    "501070": {
+	        "id": "501070",
+	        "name": "Barilla Plus Spaghetti",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "96.25",
+	            "percent": 5
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "5.08",
+	            "percent": 10
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "19.25",
+	            "percent": 7
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "1.02",
+	            "percent": 2
+	        }
+	    },
+	    "502035": {
+	        "id": "502035",
+	        "name": "Steamed Sugar Snap Peas",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "14.00",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.70",
+	            "percent": 2
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "2.45",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "503025": {
+	        "id": "503025",
+	        "name": "Pepper, Onion & Cheese Pizza on Whole Wheat Crust",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "249.00",
+	            "percent": 12
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "12.60",
+	            "percent": 25
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "34.50",
+	            "percent": 11
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "7.50",
+	            "percent": 12
+	        }
+	    },
+	    "503047": {
+	        "id": "503047",
+	        "name": "Bulgur Wheat Pilaf",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "30.25",
+	            "percent": 2
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "1.02",
+	            "percent": 2
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "6.33",
+	            "percent": 2
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.30",
+	            "percent": 1
+	        }
+	    },
+	    "504088": {
+	        "id": "504088",
+	        "name": "Roasted Honey Lime Chicken",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "231.00",
+	            "percent": 12
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "23.90",
+	            "percent": 48
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "2.40",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "13.30",
+	            "percent": 20
+	        }
+	    },
+	    "505033": {
+	        "id": "505033",
+	        "name": "Red Pepper Hummus",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "55.00",
+	            "percent": 3
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "2.50",
+	            "percent": 5
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "6.10",
+	            "percent": 2
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "2.50",
+	            "percent": 4
+	        }
+	    },
+	    "505056": {
+	        "id": "505056",
+	        "name": "Vegan Chicken Grill Patty",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "160.00",
+	            "percent": 8
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "11.00",
+	            "percent": 22
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "15.00",
+	            "percent": 5
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "6.00",
+	            "percent": 9
+	        }
+	    },
+	    "505064": {
+	        "id": "505064",
+	        "name": "Brown Rice",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "10.00",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.25",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "2.10",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.10",
+	            "percent": 0
+	        }
+	    },
+	    "505587": {
+	        "id": "505587",
+	        "name": "Seasonal Roasted Vegetables",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "22.25",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.50",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "2.58",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "1.15",
+	            "percent": 2
+	        }
+	    },
+	    "506025": {
+	        "id": "506025",
+	        "name": "Spinach Pizza on Multigrain Crust",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "178.00",
+	            "percent": 9
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "9.30",
+	            "percent": 19
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "20.20",
+	            "percent": 7
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "7.00",
+	            "percent": 11
+	        }
+	    },
+	    "508014": {
+	        "id": "508014",
+	        "name": "Hallal Grilled Hamburger",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "228.00",
+	            "percent": 11
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "15.90",
+	            "percent": 32
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "4.00",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "15.90",
+	            "percent": 24
+	        }
+	    },
+	    "508015": {
+	        "id": "508015",
+	        "name": "Hallal Grilled Frankfurter",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "95.00",
+	            "percent": 5
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "3.40",
+	            "percent": 7
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.10",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "8.40",
+	            "percent": 13
+	        }
+	    },
+	    "599028": {
+	        "id": "599028",
+	        "name": "Rocky Road Brownies",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "150.00",
+	            "percent": 8
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "1.50",
+	            "percent": 3
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "21.00",
+	            "percent": 7
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "7.00",
+	            "percent": 11
+	        }
+	    },
+	    "061042": {
+	        "id": "061042",
+	        "name": "Cage Free Egg Whites",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "14.25",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "3.12",
+	            "percent": 6
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.28",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "061041": {
+	        "id": "061041",
+	        "name": "Cage-Free Egg Whites Cooked to Order",
+	        "image": "https://images.pexels.com/photos/204868/pexels-photo-204868.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "14.25",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "3.12",
+	            "percent": 6
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.28",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": 0,
+	            "percent": 0
+	        }
+	    },
+	    "061056": {
+	        "id": "061056",
+	        "name": "Cage Free Eggs Cooked to Order",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "70.00",
+	            "percent": 4
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "6.00",
+	            "percent": 12
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.00",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "4.50",
+	            "percent": 7
+	        }
+	    },
+	    "075012": {
+	        "id": "075012",
+	        "name": "Crispy Fish Sandwich",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "320.00",
+	            "percent": 16
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "16.20",
+	            "percent": 32
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "36.30",
+	            "percent": 12
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "11.60",
+	            "percent": 18
+	        }
+	    },
+	    "077003": {
+	        "id": "077003",
+	        "name": "Grilled Burger",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "271.00",
+	            "percent": 14
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "19.10",
+	            "percent": 38
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "21.10",
+	            "percent": 32
+	        }
+	    },
+	    "077022": {
+	        "id": "077022",
+	        "name": "Grilled All Beef Old Neighborhood Hot Dog",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "129.00",
+	            "percent": 6
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "7.90",
+	            "percent": 16
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.00",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "9.90",
+	            "percent": 15
+	        }
+	    },
+	    "042079": {
+	        "id": "042079",
+	        "name": "Beet and Onion Salad",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "20.25",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.57",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "6.08",
+	            "percent": 2
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.15",
+	            "percent": 0
+	        }
+	    },
+	    "042075": {
+	        "id": "042075",
+	        "name": "Iberian Chick Pea Salad",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "28.25",
+	            "percent": 2
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.85",
+	            "percent": 2
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "2.83",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "1.43",
+	            "percent": 2
+	        }
+	    },
+	    "042090": {
+	        "id": "042090",
+	        "name": "Greek Pasta Salad",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "31.25",
+	            "percent": 2
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.57",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "4.25",
+	            "percent": 2
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "1.43",
+	            "percent": 2
+	        }
+	    },
+	    "046001": {
+	        "id": "046001",
+	        "name": "Romaine Lettuce",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "4.81",
+	            "percent": 0
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.35",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.93",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.09",
+	            "percent": 0
+	        }
+	    },
+	    "048006": {
+	        "id": "048006",
+	        "name": "Flaked Tuna",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "36.00",
+	            "percent": 2
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "6.62",
+	            "percent": 13
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.82",
+	            "percent": 1
+	        }
+	    },
+	    "048016": {
+	        "id": "048016",
+	        "name": "Hummus",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "55.00",
+	            "percent": 3
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "2.50",
+	            "percent": 5
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "6.00",
+	            "percent": 2
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "2.50",
+	            "percent": 4
+	        }
+	    },
+	    "048503": {
+	        "id": "048503",
+	        "name": "Tuna Salad",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "65.00",
+	            "percent": 3
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "4.80",
+	            "percent": 10
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "0.55",
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "4.88",
+	            "percent": 8
+	        }
+	    },
+	    "071039": {
+	        "id": "071039",
+	        "name": "Home Cooked Roast Beef",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "38.75",
+	            "percent": 2
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "6.90",
+	            "percent": 14
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": 0,
+	            "percent": 0
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "1.02",
+	            "percent": 2
+	        }
+	    },
+	    "023549": {
+	        "id": "023549",
+	        "name": "Tomato Basil Ravioli Soup",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "18.17",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.35",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "2.15",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.95",
+	            "percent": 2
+	        }
+	    },
+	    "025503": {
+	        "id": "025503",
+	        "name": "French Onion Soup with Croutons",
+	        "calories": {
+	            "fact": "Calories",
+	            "amount": "14.67",
+	            "percent": 1
+	        },
+	        "protein": {
+	            "fact": "Protein",
+	            "amount": "0.70",
+	            "percent": 1
+	        },
+	        "carbs": {
+	            "fact": "Total Carbs",
+	            "amount": "1.78",
+	            "percent": 1
+	        },
+	        "fat": {
+	            "fact": "Total Fat",
+	            "amount": "0.35",
+	            "percent": 1
+	        }
+	    }
+	};
+	
+	exports.default = nutrition;
+
+/***/ },
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
