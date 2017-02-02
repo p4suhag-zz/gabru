@@ -40,4 +40,3 @@ node_modules
 # Project specific ignore
 config/config.js
 config/env.js
-.build
