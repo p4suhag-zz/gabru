@@ -1,0 +1,118 @@
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #eef1f3;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased; }
+
+.containercard {
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 90px; }
+
+a {
+  color: white;
+  text-decoration: none; }
+
+.navbar {
+  display: -ms-flexbox;
+  display: flex;
+  height: 60px;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-align: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1em; }
+
+.navbar__item {
+  padding: 0 15px; }
+
+.navbar--grey {
+  background-color: rgba(53, 47, 74, 0.88); }
+
+.card {
+  max-width: 300px;
+  margin: 15px auto;
+  padding: 15px;
+  background-color: white; }
+
+.card__image {
+  height: 250px;
+  background-size: cover;
+  background-position: center; }
+
+.card__content {
+  padding: 10px 0; }
+
+.card__name {
+  height: 30px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.72);
+  font-weight: 600;
+  line-height: 1.8em;
+  word-spacing: 0.3px;
+  font-size: 1.15em; }
+
+.card__nutrition {
+  font-size: 0.95em;
+  font-weight: 600;
+  line-height: 1.7em;
+  letter-spacing: 0.25px;
+  width: 33.3%;
+  display: inline-block;
+  color: rgba(57, 65, 70, 0.93); }
+  .card__nutrition p {
+    margin-bottom: 5px; }
+  .card__nutrition :first-child {
+    color: rgba(97, 105, 111, 0.78); }
+
+.pad__lft {
+  padding-left: 15px; }
+
+.card__button {
+  max-width: 130px;
+  text-align: center;
+  background-color: #444444;
+  border: 1px solid #444444;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  word-spacing: 3px;
+  font-size: 0.98em;
+  line-height: 1.6em;
+  letter-spacing: 0.5px;
+  border-radius: 2px;
+  padding: 8px 14px;
+  box-shadow: 8px 8px 28px rgba(0, 0, 0, 0.4);
+  transition: all ease 0.1s; }
+
+.card__button:hover {
+  background-color: rgba(31, 35, 42, 0.82);
+  border-color: rgba(255, 255, 255, 0.68);
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2); }
+
+.card__button:active {
+  color: #444444;
+  background-color: white; }
+
+.dietbtn {
+  margin: 20px auto 0; }
