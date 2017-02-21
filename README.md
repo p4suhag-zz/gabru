@@ -1,7 +1,8 @@
-![Screenshot](/Screenshot.png?raw=true "Screenshot")
 
 ## Gabru
 A nutrition based React app where you can find delicious food to fit your lifestyle. 
+
+![Screenshot](/Screenshot.png?raw=true "Screenshot")
 
 ## Technology
 
